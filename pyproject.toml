@@ -1,0 +1,50 @@
+[build-system]
+build-backend = "uv_build"
+requires = [ "uv-build" ]
+
+[project]
+name = "countdown"
+version = "0.1.0"
+license = "GPL-3.0-or-later"
+license-files = ["LICENSE"]
+requires-python = ">=3.14"
+
+[project.scripts]
+countdown = "countdown.__main__:main"
+
+[dependency-groups]
+dev = [
+  "pytest",
+  "ruff",
+  "ty",
+]
+
+[tool.uv.build-backend]
+module-name = "countdown"
+module-root = "src"
+
+[tool.ruff.lint]
+select = [ "ALL" ]
+ignore = [
+  "COM812", # missing-trailing-comma
+  "COM819", # prohibited-trailing-comma
+  "D203",   # incorrect-blank-line-before-class
+  "D206",   # docstring-tab-indentation
+  "D207",   # under-indentation
+  "D208",   # over-indentation
+  "D213",   # multi-line-summary-second-line
+  "D300",   # triple-single-quotes
+  "Q000",   # bad-quotes-inline-string
+  "Q001",   # bad-quotes-multiline-string
+  "Q002",   # bad-quotes-docstring
+  "Q003",   # avoidable-escaped-quote
+  "Q004",   # unnecessary-escaped-quote
+  "W191",   # tab-indentation
+]
+[tool.ruff.lint.per-file-ignores]
+"**/__init__.py" = [ "D104" ]
+"scripts/*.py" = [ "T201" ]
+"tests/**/*.py" = [ "D", "S101"]
+
+[tool.pytest.ini_options]
+testpaths = [ "tests" ]

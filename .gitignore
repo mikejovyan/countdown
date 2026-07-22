@@ -1,0 +1,10 @@
+# Python
+.ipynb_checkpoints/
+__pycache__/
+.pytest_cache/
+
+# Package build
+dist/
+
+# Virtual environment
+.venv/
